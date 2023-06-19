@@ -1,0 +1,66 @@
+PVector location;
+PVector velocity;
+int x = 5;
+int x0 = 0;
+color b1;
+color b2;
+color c1;
+color c2;
+void setup() {
+  size(800,800);
+  smooth();
+  background(255);
+  location = new PVector(100,100);
+  velocity = new PVector(2.5,5);
+  colorMode(RGB,400);
+  for (int i = 0; i < 400; i++) {
+  for (int j = 0; j < 400; j++) {
+    stroke(i, j, 0);
+    point(i, j);
+  }}
+   b1 = color(255);
+  b2 = color(0);
+  c1 = color(204, 102, 0);
+  c2 = color(0, 102, 153);
+}
+void draw() {
+   fill(0,20);
+  rect(0,0,width,height);
+  int x = 50;
+  int y = 50;
+  translate(width/2,height/2);
+      rotate(77.);
+  while(x < 800  && y< 800){
+
+
+ stroke(255,150);
+noFill();
+circle(mouseX/3,mouseY/4,20);
+    circle(x,y,10);
+    rotate(3.59);
+    x=x+2;
+    y=y+9;
+    location.add(velocity);
+  noStroke();
+  fill(255,10);
+  if ((location.x > width)  (location.x < 0)) {
+    velocity.x = velocity.x * -1 * cos( 6.28318);
+    rotate(50);
+  }
+  if ((location.y > height)  (location.y < 0)) {
+    velocity.y = velocity.y * -1 *  cos( 6.28318);
+    rotate(65);
+  }
+  stroke(255,150);
+    fill(c2);
+       if(mousePressed == true ){
+rotate(4);
+         fill(c1);
+    }
+            if(keyPressed){
+          if(keyCode == LEFT){
+      rotate(9);
+      fill(random(255),random(255),random(255));
+    }}
+  ellipse(location.x,location.y,15,15);
+}}
